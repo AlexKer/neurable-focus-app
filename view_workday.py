@@ -204,7 +204,7 @@ def get_all_rec_variances(df, threshold=0.005):
             row_dict = {'rec_nm':rec_nm,
                         'window_dt': window_dt,
                         'window_var': -window_var,
-                        'focused': window_var < custom_threshold}
+                        'focused': window_var < threshold}
             rows_list.append(row_dict)
     # loop through all recs
     for rec_nm in rec_nm_list:
