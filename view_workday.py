@@ -17,7 +17,7 @@ from utils import settings
 
 #%% Params
 DIR_DATA = settings.DIR_WORKDAY+'/output'
-FP_LBLS = settings.DIR_LBL+'/gform.tsv'
+FP_LBLS = ettings.DIR_WORKDAY+'/gform.tsv'
 WIN_LEN = 4  # seconds
 
 
