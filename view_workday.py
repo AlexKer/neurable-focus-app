@@ -116,7 +116,7 @@ def plot_multimodal(inf_df, lbl_df):
             "Machine Learning Prediction of EEG",
             "Focused? (from our algorithm)"),
         # specs = [{}, {}, {}],
-        vertical_spacing = 0.05)
+        vertical_spacing = 0.10)
     # focus from low to high
     fig.add_trace(f_act.data[0], row=1, col=1)
     fig.add_trace(f_inf.data[0], row=2, col=1)
