@@ -13,11 +13,12 @@ import plotly.express as px
 import plotly.io as pio
 pio.templates.default = "simple_white"
 import streamlit as st
-from utils import settings
+import os
 
 #%% Params
-DIR_DATA = settings.DIR_WORKDAY+'/output'
-FP_LBLS = ettings.DIR_WORKDAY+'/gform.tsv'
+DIR = os.getcwd()
+DIR_DATA = DIR+'/output'
+FP_LBLS = DIR+'/output/gform.tsv'
 WIN_LEN = 4  # seconds
 
 
@@ -28,8 +29,8 @@ if _py_version < 3.7:
     raise RuntimeError(f"Python 3.7+ required. Got {_py_version}")
 
 
-assert path.isdir(DIR_DATA)
-assert path.isfile(FP_LBLS)
+# assert path.isdir(DIR_DATA)
+# assert path.isfile(FP_LBLS)
 
 
 #%% input interface
