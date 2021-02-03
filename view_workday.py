@@ -222,12 +222,17 @@ print(var_df.head())
 st.title("**Neurable Workday Analysis**")
 st.write("How to use: 1. Click and drag to select region and zoom in. 2. Double click to zoom out.")
 # AJ
-# plot_multimodal(*get_session_data("AJ_dogfood_01212021", ["aj_1", "aj_2"]))
+st.write('aj_1, aj_2')
+plot_multimodal(*get_session_data("AJ_dogfood_01212021", ["aj_1", "aj_2"]))
 # Jegan
-# plot_multimodal(*get_session_data("JC_DogFood_01202021", ["jc_1", "jc_2"]))
+st.write('jc_1, jc_2')
+plot_multimodal(*get_session_data("JC_DogFood_01202021", ["jc_1", "jc_2"]))
+st.write('jc_3')
 plot_multimodal(*get_session_data("JC_dogfood_01222021", ["jc_3"]))
 # plot_multimodal(*get_session_data("JC_dogfood_01222021", ["jc_4"]))
 # Ramses
-# plot_multimodal(*get_session_data("RA_DogFood_01212022", ["ra_3"]))
-# plot_multimodal(*get_session_data("RA_DogFood_01212021", ["ra_1", "ra_2"]))
+st.write('ra_3')
+plot_multimodal(*get_session_data("RA_DogFood_01212022", ["ra_3"])
+st.write('ra_1, ra_2'))
+plot_multimodal(*get_session_data("RA_DogFood_01212021", ["ra_1", "ra_2"]))
 # %%
