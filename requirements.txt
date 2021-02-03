@@ -1,0 +1,3 @@
+neurablegrunt
+extended_mne
+mne==0.22
