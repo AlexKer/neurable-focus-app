@@ -1,9 +1,4 @@
-mne==0.22.0
 pandas==1.0.5
-fma_sivox_analysis.egg==info
-tqdm==4.48.2
 numpy==1.18.2
 plotly==4.4.1
 streamlit==0.71.0
-neurablegrunt.egg==info
-PyYAML==5.4.1
