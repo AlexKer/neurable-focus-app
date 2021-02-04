@@ -124,7 +124,7 @@ def plot_multimodal(inf_df, lbl_df):
     # categories of activity ranked from low to high
     fig.update_yaxes(type='category',categoryarray=lbl_sorted, row=1, col=1)
     fig.update_yaxes(type='category',categoryarray=['false','true'], row=3, col=1)
-    fig.update_yaxes(title='level of focus (calm)', row=2, col=1)
+    fig.update_yaxes(title='level of focus', row=2, col=1)
     fig.update_yaxes(showticklabels=False, row=2, col=1)
     # hide colour gradient
     fig.update(layout_coloraxis_showscale=False)
@@ -191,27 +191,37 @@ f_inf.show()
 def get_all_rec_variances(df, threshold=0.005):
     rec_nm_list = df['rec_nm'].unique()
     rows_list = []
+    # threshold list mapping from rec_num -> threshold
+    threshold_dict = {}
+    def get_threshold(arr):
+        p = np.percentile(arr, 50)
+        return p
     # extract all variance for single rec
     def extract_windows_variance(rec_nm, rec_df, window_size=75):
         rec_attn_arr = rec_df['attn'].values
         rec_dt_arr = rec_df['dt'].values
-        custom_threshold = rec_attn_arr.mean()
         last_idx = rec_attn_arr.shape[0]-window_size
+        rec_var_list = []
         for i in range(0,last_idx):
             window_var = rec_attn_arr[i:i+window_size].var()
             mid_idx = (i + i+window_size) // 2
             window_dt = rec_dt_arr[mid_idx]
             row_dict = {'rec_nm':rec_nm,
                         'window_dt': window_dt,
-                        'window_var': -window_var,
-                        'focused': window_var < threshold}
+                        'window_var': -window_var}
             rows_list.append(row_dict)
+            rec_var_list.append(window_var)
+        threshold_dict[rec_nm] = -get_threshold(rec_var_list)
     # loop through all recs
     for rec_nm in rec_nm_list:
         rec_df = df[df['rec_nm']==rec_nm]
         extract_windows_variance(rec_nm, rec_df)
     # create df with cols |rec_nm|window_dt(center of 5min window)|window_variance
     var_df = pd.DataFrame(rows_list)
+    # add additional binary focus col depending on rec threshold
+    print(threshold_dict)
+    var_df['threshold'] = var_df['rec_nm'].map(threshold_dict)
+    var_df['focused'] = var_df['window_var'] > var_df['threshold']
     return var_df
 var_df = get_all_rec_variances(inf_df)
 print(var_df.head())
