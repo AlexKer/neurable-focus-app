@@ -128,7 +128,8 @@ def append_computed_timestamps(x, rec_nm, meta_df):
         one extra column on x 'ts' containing a datetime
     """
     # extract start time from EEG front matter
-    datetime_start_str = meta_df.loc[meta_df["rec_nm"]=='dogfood_'+rec_nm]["datetime"].values[0]
+    # datetime_start_str = meta_df.loc[meta_df["rec_nm"]=='dogfood_'+rec_nm]["datetime"].values[0]
+    datetime_start_str = '2021-02-08 11:53:23'
     datetime_start = datetime.datetime.fromisoformat(datetime_start_str)
 
     # compute timestamps

@@ -29,8 +29,8 @@ import view_utils
 #%% Params
 DIR = os.getcwd()
 DIR_DATA = DIR+'/output/new'
-FP_INF = DIR_DATA+'/jc_4_inf.csv' # inference model outputs
-FP_LBLS = DIR_DATA+'/multivariate_lbls.tsv' # based on new gform
+FP_INF = DIR_DATA+'/khat_inf.csv' # inference model outputs
+FP_LBLS = DIR_DATA+'/khat_multivar_lbls.tsv' # based on new gform
 FP_META = DIR_DATA+'/meta.csv' # metadata
 
 WIN_LEN = 4  # seconds
